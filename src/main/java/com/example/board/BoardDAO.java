@@ -55,6 +55,8 @@ public class BoardDAO {
                 two.setSeq(rs.getInt("seq"));
                 two.setTitle(rs.getString("title"));
                 two.setWriter(rs.getString("writer"));
+                two.setContent(rs.getString("content"));
+                two.setRegdate(rs.getTimestamp("regdate"));
 
                 return two;
             }
@@ -72,6 +74,8 @@ public class BoardDAO {
                 one.setSeq(rs.getInt("seq"));
                 one.setTitle(rs.getString("title"));
                 one.setWriter(rs.getString("writer"));
+                one.setContent(rs.getString("content"));
+                one.setRegdate(rs.getTimestamp("regdate"));
                 return one;
             }
         });
