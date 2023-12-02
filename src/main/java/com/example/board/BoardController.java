@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 @Controller
-@RequestMapping("/board")
+@RequestMapping(value ="/board")
 
 public class BoardController {
 
     @Autowired
-    BoardServiceImpl boardServiceImpl;
+    BoardService boardService;
     @RequestMapping("/list")
     public String boardList(Model model) {
-        List<BoardVO> list = boardServiceImpl.getBoardList();
+        List<BoardVO> list = boardService.getBoardList();
         model.addAttribute("list", list);
-        return "boardList";
+        return "list";
     }
 
     @RequestMapping (value = "/add", method = RequestMethod.GET)
@@ -31,13 +31,13 @@ public class BoardController {
     @RequestMapping(value = "/addok", method = RequestMethod.POST)
     public String addPostOK(BoardVO vo) {
 
-        if (boardServiceImpl.insertBoard(vo) == 0)
+        if (boardService.insertBoard(vo) == 0)
             System.out.println("데이터 추가 실패");
 
         else
             System.out.println("데이터 추가 성공!");
 
-        return "redirect:boardList";
+        return "redirect:list";
     }
 
 }
